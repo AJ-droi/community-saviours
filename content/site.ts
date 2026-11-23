@@ -12,18 +12,23 @@ export const site = {
       "Community Saviours CIC uses the power of music and creativity to help people rebuild confidence, develop skills and create positive pathways for the future.",
   },
   // TODO: fill these in. Empty values are hidden on the page or show a [placeholder].
-  email: "", // e.g. "hello@communitysaviours.org"
+  email: "", // e.g. "hello@communitysaviours.org" (also the contact for privacy requests)
   phone: "",
-  address: "", // registered / correspondence address
-  companyNumber: "", // CIC company number for the footer
+  address: "", // correspondence address shown in Contact (can be the same as the registered office)
+  // Legally required on the website (Names and Trading Disclosures Regulations 2015):
+  legalName: "Community Saviours CIC", // TODO: exact registered name as on Companies House
+  companyNumber: "", // TODO: Companies House number
+  registeredIn: "England and Wales", // TODO: confirm (or "Scotland" / "Northern Ireland")
+  registeredOffice: "", // TODO: registered office address as on Companies House
   socials: [] as { label: string; href: string }[], // e.g. { label: "Instagram", href: "https://instagram.com/..." }
+  // Links start with "/" so they also work from other pages (e.g. /privacy).
   nav: [
-    { label: "About", href: "#about" },
-    { label: "What We Do", href: "#programmes" },
-    { label: "Our Model", href: "#model" },
-    { label: "Impact", href: "#impact" },
+    { label: "About", href: "/#about" },
+    { label: "What We Do", href: "/#programmes" },
+    { label: "Our Model", href: "/#model" },
+    { label: "Impact", href: "/#impact" },
   ],
-  cta: { label: "Partner With Us", href: "#contact" },
+  cta: { label: "Partner With Us", href: "/#contact" },
 };
 
 export const hero = {
@@ -257,6 +262,7 @@ export const contact = {
     confirmation: "Thank you. Your message has been sent and we will be in touch soon.",
     error: "Sorry, your message couldn't be sent right now. Please try again later.",
     to: "", // TODO: inbox for form messages (or set CONTACT_TO)
+    privacyNote: "We’ll only use your details to reply to your message.",
     interests: [
       { value: "partnership", label: "Partnership" },
       { value: "custodial", label: "Prison / custodial programme" },

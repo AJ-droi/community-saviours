@@ -115,7 +115,13 @@ export default function ContactForm() {
       </label>
       <input className="hp" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <div className="form-actions">
-        {status === "error" && serverMessage && <p className="form-error" role="alert">{serverMessage}</p>}
+        {status === "error" && serverMessage ? (
+          <p className="form-error" role="alert">{serverMessage}</p>
+        ) : (
+          <p className="form-privacy">
+            {f.privacyNote} See our <a href="/privacy">Privacy Policy</a>.
+          </p>
+        )}
         <button className="form-submit" type="submit" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : status === "error" ? "Try again" : f.button}
         </button>

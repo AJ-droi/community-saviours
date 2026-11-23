@@ -22,17 +22,23 @@ headings, floating white pill nav, full-bleed hero with dark gradient, pill sect
 dashed-line step row, soft #F6F8FC panels, faint vertical grid lines, navy footer. No text, images or branding
 from the template are used.
 
+A Privacy Policy page lives at `/privacy`, linked from the footer and from a note under the contact form.
+The site sets no cookies (self-hosted font, no analytics, no third-party embeds), so no cookie banner is needed.
+Keep it that way unless you also add a consent banner.
+
 ## Where things live
 ```
 app/
   layout.tsx        Site shell: metadata, font, nav, footer
   page.tsx          Home page: lists the sections in order
+  privacy/page.tsx  Privacy Policy page (content in content/privacy.ts)
   globals.css       All styling. Brand colours/fonts are the tokens at the top (:root)
   icon.svg          Favicon (placeholder mark)
   api/contact/      Contact form endpoint (emails the message via Resend)
 components/         One file per section + Nav, Footer, Photo, ContactForm, RevealObserver, ui.tsx (Label, buttons, Logo)
 lib/                contact.ts (form validation), images.ts (photo auto-swap)
 content/site.ts     ALL the copy and links. Edit text here, not in the components
+content/privacy.ts  Privacy Policy wording (draft for client review)
 copy.md             The client's copy as supplied (extracted from the PDF)
 ```
 
@@ -45,6 +51,9 @@ copy.md             The client's copy as supplied (extracted from the PDF)
 - **Map:** `map.jpg` placeholder in the Contact section. Swap for a static map image, or replace `<Photo file="map.jpg">` in `components/Contact.tsx` with a Google Maps embed.
 - **Contact form:** set the Resend variables below.
 - **Open Graph image:** add `public/og.png` (1200×630) and enable it in `app/layout.tsx`.
+- **Company details (legally required on the site):** `legalName`, `companyNumber`, `registeredIn`, `registeredOffice` in `content/site.ts`. They show in the footer and on the Privacy Policy.
+- **Privacy Policy (`/privacy`):** a draft in `content/privacy.ts`, written against the ICO's right-to-be-informed checklist. Fill in `lastUpdated`, `retention` (12 months suggested), `host`, and the email provider. **Have the client review it before launch.** Update it if the site adds analytics, a newsletter, embedded maps/videos or donations, and add a consent banner at that point.
+- **ICO fee:** the client should check whether they need to pay the ICO data protection fee (ico.org.uk/for-organisations/data-protection-fee).
 
 ## Contact form: turn on email delivery
 The form posts to `/api/contact`, which sends through Resend (https://resend.com). Copy `.env.example` to `.env.local`

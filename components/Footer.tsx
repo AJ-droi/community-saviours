@@ -17,14 +17,15 @@ export default function Footer() {
               <h2>Explore</h2>
               <ul>
                 {site.nav.map((l) => <li key={l.href}><a href={l.href}>{l.label}</a></li>)}
-                <li><a href="#values">Our Values</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/#values">Our Values</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
               </ul>
             </div>
             <div>
               <h2>Programmes</h2>
               <ul>
-                {programmes.items.map((p) => <li key={p.title}><a href="#programmes">{p.title}</a></li>)}
+                {programmes.items.map((p) => <li key={p.title}><a href="/#programmes">{p.title}</a></li>)}
               </ul>
             </div>
             <div>
@@ -49,8 +50,13 @@ export default function Footer() {
         </p>
         <div className="footer-bottom">
           <p>© {year} {site.name}. Operating for community benefit, not for private profit.</p>
-          <p>{site.companyNumber ? `Company No. ${site.companyNumber}` : "[Company No.]"} · Community Interest Company</p>
+          <p><a href="/privacy">Privacy Policy</a></p>
         </div>
+        {/* Legally required company details (Names and Trading Disclosures Regulations 2015) */}
+        <p className="footer-legal">
+          {site.legalName} is a community interest company registered in {site.registeredIn}, company number{" "}
+          {site.companyNumber || "[Company number]"}. Registered office: {site.registeredOffice || "[Registered office address]"}.
+        </p>
       </div>
     </footer>
   );
